@@ -1,7 +1,7 @@
 package com.udacity.jwdnd.course1.cloudstorage.controller;
 
-import com.udacity.jwdnd.course1.cloudstorage.model.User;
 //import com.udacity.jwdnd.c1.review.service.UserService;
+import com.udacity.jwdnd.course1.cloudstorage.model.Users;
 import com.udacity.jwdnd.course1.cloudstorage.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class SignupController {
     }
 
     @PostMapping()
-    public String signupUser(@ModelAttribute User user, Model model) {
+    public String signupUser(@ModelAttribute Users user, Model model) {
 
         System.out.println("sign up user");
 
