@@ -31,15 +31,11 @@ public class SignupController {
 
         System.out.println("sign up user");
 
-
         String signupError = null;
 
         if (!userService.isUsernameAvailable(user.getUsername())) {
             System.out.println("user not available" +  user.getUsername());
             signupError = "The username already exists.";
-        }else {
-            System.out.println(user.getUsername());
-            userService.createUser(user);   // add user to database
         }
 
         if (signupError == null) {
