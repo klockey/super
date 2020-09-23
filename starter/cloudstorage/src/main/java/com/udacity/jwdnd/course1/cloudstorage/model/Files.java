@@ -5,7 +5,10 @@ public class Files {
     String contentType;
     String fileSize;
     String userId;
-    String fileData;
+    private byte[] fileData;
+
+    public Files(String filename, String contentType, String fileSize, String userId, byte[] fileData) {
+    }
 
     public String getFilename() {
         return filename;
@@ -39,11 +42,11 @@ public class Files {
         this.userId = userId;
     }
 
-    public String getFileData() {
+    public byte[] getFileData() {
         return fileData;
     }
 
-    public void setFileData(String fileData) {
+    public void setFileData(byte[] fileData) {
         this.fileData = fileData;
     }
 }

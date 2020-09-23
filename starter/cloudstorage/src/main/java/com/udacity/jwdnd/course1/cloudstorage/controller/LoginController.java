@@ -1,7 +1,6 @@
 package com.udacity.jwdnd.course1.cloudstorage.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login")
 public class LoginController {
 
-    @GetMapping()
-    public String loginView() {
+//    @GetMapping()
+//    public String loginView() {
+//        System.out.println("loginview");
+//        return "login";
 
-
-        System.out.println("loginview");
-        return "login";
-       // return "";
+    @RequestMapping("/")
+    public String redirect() {
+        return "redirect:/login?param=error";
     }
 
     @PostMapping()
@@ -23,5 +23,4 @@ public class LoginController {
         System.out.println("post");
         return "home";
     }
-
 }
