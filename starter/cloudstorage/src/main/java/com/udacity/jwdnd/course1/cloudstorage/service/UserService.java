@@ -18,6 +18,12 @@ public class UserService {
         this.hashService = hashService;
     }
 
+    public boolean checkUsernamePassword(String username, String password){
+        String encodedSalt = userMapper.getUsers(username).getSalt();
+        String hashedPassword = hashService.getHashedValue(password, encodedSalt);
+        return (hashedPassword.equals(userMapper.getUsers(username).getPassword()));
+    }
+
     public boolean isUsernameAvailable(String username) {
         return userMapper.getUsers(username) == null;
     }
