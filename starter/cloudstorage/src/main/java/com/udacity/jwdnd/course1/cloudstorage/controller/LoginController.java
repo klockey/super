@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 //@RequestMapping("/login")
 public class LoginController {
 
-    private final UserService userService;
-    public LoginController(UserService userService) {
+      private final UserService userService;
+     public LoginController(UserService userService) {
         this.userService = userService;
     }
 
@@ -24,16 +24,10 @@ public class LoginController {
          return "login";
      }
 
-//    @RequestMapping("/")
-//    public String redirect() {
-//        System.out.println("redirect");
-//        return "redirect:login?error";
-//    }
-
     @PostMapping("/login")
     public String postView(@ModelAttribute Users user, Model model)   {
         if (!userService.isUsernameAvailable(user.getUsername()) && userService.checkUsernamePassword(user.getUsername(),user.getPassword()))
             return "home";
-        return "login";
+        return "redirect:login?error";
     }
 }
