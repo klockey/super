@@ -1,6 +1,11 @@
 package com.udacity.jwdnd.course1.cloudstorage.model;
 
-public class Users {
+import org.springframework.context.annotation.Scope;
+
+import java.io.Serializable;
+
+@Scope("session")
+public class Users implements Serializable {
     private String username;
     private String salt;
     private String password;

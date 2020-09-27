@@ -2,10 +2,9 @@ package com.udacity.jwdnd.course1.cloudstorage.controller;
 
 import com.udacity.jwdnd.course1.cloudstorage.service.FileService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home")
+//@RequestMapping("/home")
 public class FileUploadController {
 
     private final FileService fileService;
