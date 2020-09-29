@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @Scope("session")
-//@RestController
 public class NoteController {
     private final NoteService noteService;
     private final UserService userService;
@@ -27,10 +26,12 @@ public class NoteController {
     @PostMapping("/noteModal")
     public String postView(HttpSession session, @RequestParam("noteId") Integer noteId, @RequestParam("noteTitle") String noteTitle, @RequestParam("noteDescription") String noteDescription, Model model)   {
         String usernameSession = (String) session.getAttribute("SESSION_USERNAME");
+        System.out.println("usernamesession:" + usernameSession);
         Users userDb = userService.getUser(usernameSession);
         System.out.println("NOTE ID:" + noteId);
         System.out.println("NOTE TITLE:" + noteTitle);
         System.out.println("NOTE DESCRIPTION:" + noteDescription);
+        System.out.println("user id:" + userDb.getUserId());
         if(noteId == 0){
             noteService.uploadNote(noteTitle, noteDescription, userDb.getUserId());
         } else{

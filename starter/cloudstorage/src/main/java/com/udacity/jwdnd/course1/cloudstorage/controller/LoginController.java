@@ -9,13 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Scope("session")
-//@RestController
-//@RequestMapping("/login")
+@RequestMapping("/login")
 public class LoginController {
     private final UserService userService;
     private final NoteService noteService;
@@ -23,17 +23,18 @@ public class LoginController {
         this.userService = userService;
         this.noteService = noteService;
     }
-    @GetMapping("/login")
+    @GetMapping()
     public String loginView() {
         System.out.println("loginview");
         System.out.println("param");
         return "login";
     }
 
-    @PostMapping("/login")
+    @PostMapping()
     public String postView(@ModelAttribute Users user, Model model, HttpServletRequest request)   {
         System.out.println("login");
         if (!userService.isUsernameAvailable(user.getUsername()) && userService.checkUsernamePassword(user.getUsername(),user.getPassword())) {
+            System.out.println("login controller username " + user.getUsername());
             request.getSession().setAttribute("SESSION_USERNAME", user.getUsername());
             Users userDb = userService.getUser(user.getUsername());
             model.addAttribute("notes", this.noteService.getNotes(userDb.getUserId()));
